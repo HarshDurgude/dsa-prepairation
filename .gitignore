@@ -1,0 +1,5 @@
+input.txt
+output.txt
+exec
+*.out
+.DS_Store
