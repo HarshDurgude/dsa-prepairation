@@ -1,13 +1,13 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// problem statement : Given an integer array nums sorted in 
-// non-decreasing order, remove all duplicates in-place so 
+// problem statement : Given an integer array nums sorted in
+// non-decreasing order, remove all duplicates in-place so
 // that each unique element appears only once.
 // Return the number of unique elements in the array.
 
-// inputs 
-// 7 
+// inputs
+// 7
 // 0 0 3 5 5 7 8
 
 // output
@@ -22,34 +22,36 @@ using namespace std;
 // approach
 // very intuative when u do the move-zeros-to-end
 // using 2 pointer aproach, one to traverse and one to tarck position of
-// new no duplicates in place array in current array
+// where non-duplicate element will go, similler to move zeros to end
+// elements to shift to end get stacked up betn slow and fast pointer
 
 // complexity
 // time = O(n)
 // space = O(1)
 
 // initial approach (Worked)
-int removeDuplicates(vector<int> &nums){
+int removeDuplicates(vector<int> &nums)
+{
     int j = 0;
     for (int i = 1; i < nums.size(); i++)
     {
         if (nums[j] != nums[i])
         {
+
             swap(nums[++j], nums[i]);
         }
-        
     }
-    return j + 1; 
-    
+    return j + 1;
 }
 
-int main() {
+int main()
+{
     vector<int> nums;
-    int n;  
+    int n;
     cin >> n;
     nums.reserve(n);
     for (int i = 0; i < n; i++)
-    { 
+    {
         int x;
         cin >> x;
         nums.push_back(x);
@@ -60,6 +62,6 @@ int main() {
     {
         cout << nums[i] << endl;
     }
-    
+
     return 0;
 }
