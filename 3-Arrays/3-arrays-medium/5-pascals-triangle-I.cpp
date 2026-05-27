@@ -35,14 +35,11 @@ int pascalTriangleI(int r, int c)
     if (c > r - c) // lowering iterations cause nCr and (n)C(n-r) are same
         c = r - c;
 
-    if (c == 1) // first column elemnet will always be 1 so no need for itrations
-        return r;
-
     int result = 1;
 
     for (int i = 1; i <= c; i++)
     {
-        result *= r - c + i;
+        result *= (r - c + i);
         result /= i;
     }
     return result;
