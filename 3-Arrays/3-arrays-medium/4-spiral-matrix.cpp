@@ -1,82 +1,90 @@
-// Given an integer array nums of even length consisting of an equal
-// number of positive and negative integers.Return the answer array
-// in such a way that the given conditions are met:
-// - Every consecutive pair of integers have opposite signs.
-// - For all integers with the same sign, the order in which
-// they were present in nums is preserved.
-// - The rearranged array begins with a positive integer.
+// Given an M * N matrix, print the elements in a clockwise spiral manner.
+// Return an array with the elements in the order of their appearance when
+// printed in a spiral manner.
 
 // input
-// 6
-// -3 4 5 1 -4 -5
+// 4 4
+// 1 2 3 4
+// 5 6 7 8
+// 9 10 11 12
+// 13 14 15 16
 
 // output
-// 4
-// -3
+// 9
 // 5
-// -4
-// 1
-// -5
+// 6
+// 7
+// 11
+// 10
 
 // approach
-// in new vector we already know that each pos and neg will be placed leaving
-// one place in betn so we keep track of where pos and neg will and traverse throgh whole
-// vector and if we find a pos then place it art posInd and increament by 2 same for neg
-// and negInd because we know same sine elements will be at alternate
+// so we observe the pattern that the spiral will be repeatation of smaller and smaller
+// squares so we can use 4 for loops for each side of smaller squares to get each element
+// but then the last square will sometimes have 1/2/3/4 sides so we add conditions to check that
 
 #include <bits/stdc++.h>
 using namespace std;
 
-// optimal and cleaner
-vector<int> spiralMatrix(vector<vector<int>> &nums)
+// initial aproach, worked but,
+// missed edge cases of the lower 2 for loops
+vector<int> spiralMatrix(vector<vector<int>> &matrix)
 {
-    int n = nums.size();
+    int n = matrix.size();
+    int m = matrix[0].size();
 
-    // Initialize a result vector of size n
-    vector<int> ans(n, 0);
+    vector<int> ans;
+    int top = 0, left = 0;
+    int bottom = n - 1, right = m - 1;
 
-    // Initialize indices for positive and negative elements
-    int posIndex = 0, negIndex = 1;
-
-    // Traverse through each element in nums
-    for (int i = 0; i < n; i++)
+    while (top <= bottom && left <= right)
     {
-        if (nums[i] < 0)
+        for (int i = left; i <= right; i++)
         {
-
-            /* If current element is negative, place
-            it at the next odd index in ans*/
-            ans[negIndex] = nums[i];
-
-            // Move to the next odd index
-            negIndex += 2;
+            ans.push_back(matrix[top][i]);
         }
-        else
-        {
-            ans[posIndex] = nums[i];
+        top++;
 
-            // Move to the next even index
-            posIndex += 2;
+        for (int i = top; i <= bottom; i++)
+        {
+            ans.push_back(matrix[i][right]);
+        }
+        right--;
+
+        if (top <= bottom)
+        {
+            for (int i = right; i >= left; i--)
+            {
+                ans.push_back(matrix[bottom][i]);
+            }
+            bottom--;
+        }
+        if (left <= right)
+        {
+            for (int i = bottom; i >= top; i--)
+            {
+                ans.push_back(matrix[i][left]);
+            }
+            left++;
         }
     }
 
-    // Return the rearranged array
     return ans;
 }
 
 int main()
 {
-    vector<int> nums;
-    int n;
-    cin >> n;
-    nums.reserve(n);
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> nums(n, vector<int>(m));
     for (int i = 0; i < n; i++)
     {
-        int x;
-        cin >> x;
-        nums.push_back(x);
+        for (int j = 0; j < m; j++)
+        {
+
+            cin >> nums[i][j];
+        }
     }
-    vector<int> output = rearrangeArray2(nums);
+    vector<int> output = spiralMatrix(nums);
 
     for (int out : output)
     {
