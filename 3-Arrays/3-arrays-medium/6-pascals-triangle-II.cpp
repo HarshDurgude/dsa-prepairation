@@ -48,7 +48,8 @@ using namespace std;
 //     return result;
 // }
 
-vector<int> pasacalTriangleII(int r)
+// optimal approach
+vector<int> pascalTriangleII(int r)
 {
     vector<int> result(r);
 
@@ -65,7 +66,7 @@ int main()
     int r;
     cin >> r;
 
-    vector<int> out = pasacalTriangleII(r);
+    vector<int> out = pascalTriangleII(r);
 
     for (int i = 0; i < out.size(); i++)
     {

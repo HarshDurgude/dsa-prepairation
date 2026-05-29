@@ -1,20 +1,20 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// Given an array of integers: [1, 2, 1, 3, 2] 
-// and we are given some queries: [1, 3, 4, 2, 10]. 
-// For each query, we need to find out how many times 
-// the number appears in the array. 
-// For example, if the query is 1 our answer would be 2, 
-// and if the query is 4 the answer will be 0. 
+// Given an array of integers: [1, 2, 1, 3, 2]
+// and we are given some queries: [1, 3, 4, 2, 10].
+// For each query, we need to find out how many times
+// the number appears in the array.
+// For example, if the query is 1 our answer would be 2,
+// and if the query is 4 the answer will be 0.
 
-// Input 
+// Input
 // 5
-// 1 3 2 1 3  
+// 1 3 2 1 3
 // 5
 // 1 4 2 3 12
 
-// Ouitput 
+// Output
 // Frequency of (1) :2
 // Frequency of (4) :0
 // Frequency of (2) :1
@@ -24,7 +24,8 @@ using namespace std;
 // solution
 // same as before just using maps
 
-int main() {
+int main()
+{
 
     // Input
     int n;
@@ -64,7 +65,7 @@ int main() {
         int num;
         cin >> num;
         // logic to check frequency
-        cout <<"Frequency of ("<<num <<") :" <<  mpp[num] << endl;
+        cout << "Frequency of (" << num << ") :" << mpp[num] << endl;
     }
     return 0;
 }
