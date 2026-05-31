@@ -12,10 +12,18 @@
 // 0
 // 1
 
-// approach
+// approach 1
 // we traverse throgh the vector but also create a hashap parallelly which stores the
 // target - current wih current's index, so if we find a current in furthur traversal
 // that is eqaul to our stored elements in the hashmap then we return both of their indexes
+
+// approach 2
+// sorting the elements first then using two pointers, right and left on opp.
+// sides to traverse and repeatedly comaparing the sum of right and left with target
+// if sum less then than target then left++, if sum more than target then right--,
+// this will work because
+// we have to find a way to store initial indexes somewhere beacuse they will be
+// lost after sorting the array
 
 #include <bits/stdc++.h>
 using namespace std;
