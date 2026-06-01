@@ -64,7 +64,7 @@ vector<int> twoSum2(vector<int> &nums, int target)
 
     // Sort by first element in ascending order
     sort(eleIndex.begin(), eleIndex.end(), [](const vector<int> &a, const vector<int> &b)
-         { return a[0] < b[0]; }); // this is like the lambda functon
+         { return a[0] < b[0]; }); // this is like the callback functon
 
     /* Two pointers: one starting
     from left and one from right*/
