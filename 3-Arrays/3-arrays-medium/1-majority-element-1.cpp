@@ -9,7 +9,7 @@
 // output
 // 1
 
-// approach
+// approach (Moore’s Voting Algorithm)
 // If majority element appears more than n/2 time so if we repeatedly cancle 1 major element
 // with 1 non-major element the majority will still surview
 // Keep a count variable while iterating, Increase count when encountering the same

@@ -27,7 +27,8 @@
 using namespace std;
 
 // self derived approach, but doesnt work
-// fails for many edge cases
+// fails for many edge cases, i can still make it work but
+// it will still be more iterations than the optimal solution
 void sortZeroOneTwo1(vector<int> &nums)
 {
     int zero, one;
