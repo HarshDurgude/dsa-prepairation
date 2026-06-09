@@ -1,14 +1,14 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// Problem Statement: Given an array of N integers, 
+// Problem Statement: Given an array of N integers,
 // write a program to implement the Bubble Sorting algorithm.
 
-// input 
+// input
 // 5
-// 3 9 6 2 1 
+// 3 9 6 2 1
 
-// output 
+// output
 // 1
 // 2
 // 3
@@ -17,60 +17,58 @@ using namespace std;
 
 // Approach
 // sequentially compare two adjecent elements and swap
-// if req to make large number to later position 
+// if req to make large number to later position
 // doing this sequentially will push largest element to end
 // and again make two parts, sorted(at end) and unsored(at start)
-// continuing this will increase the sorted part and finally one 
+// continuing this will increase the sorted part and finally one
 // element will be in unsorted and we can add swaped flag to
 // break, if arr becomes sorted early
+
+// Revision
+// missed the swapped boolean at pseudocode recall
 
 // complexity
 // time wrost,avg = O(n^2), best = O(n), space O(1)
 
-// initial approach (worked) : swaps counter  
+// initial approach (worked) : swaps counter
 // added later for furthur optimization
-void bubble_sort(vector<int> &arr, int n){
-    for (int i = 0; i < n-1; i++)
+void bubble_sort(vector<int> &nums, int n)
+{
+    for (int i = 0; i < n - 1; i++)
     {
-        bool swaped=false;
-        for (int j = 0; j < n-i-1; j++)
+        bool swaped = false;
+        for (int j = 0; j < n - i - 1; j++)
         {
-            if (arr[j] > arr[j+1])
+            if (nums[j] > nums[j + 1])
             {
-                swap(arr[j], arr[j+1]);
-                swaped=true;
+                swap(nums[j], nums[j + 1]);
+                swaped = true;
             }
-            
         }
-        if (swaped==false)
+        if (swaped == false)
         {
             break;
         }
-               
     }
-
-
 
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << endl;
+        cout << nums[i] << endl;
     }
-    
-
 }
 
-
-int main() {
-    vector<int> arr;
+int main()
+{
+    vector<int> nums;
     int n;
     cin >> n;
     for (int i = 0; i < n; i++)
     {
         int x;
         cin >> x;
-        arr.push_back(x);
+        nums.push_back(x);
     }
-    
-    bubble_sort(arr, n);
+
+    bubble_sort(nums, n);
     return 0;
 }

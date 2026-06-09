@@ -1,14 +1,14 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// Problem Statement: Given an array of N integers, 
+// Problem Statement: Given an array of N integers,
 // write a program to implement the Selection sorting algorithm.
 
-// input 
+// input
 // 5
-// 3 5 6 2 1 
+// 3 5 6 2 1
 
-// output 
+// output
 // 1
 // 2
 // 3
@@ -17,43 +17,42 @@ using namespace std;
 
 // approach
 // we can sort the array by selecting the min element
-// and then swapping it with the first to get a sorted and unsorted part 
-// then continuing finding the min element and swapping it with first 
-// of the unsorted part, one element remaining in unsorted part will be 
+// and then swapping it with the first to get a sorted and unsorted part
+// then continuing finding the min element and swapping it with first
+// of the unsorted part, one element remaining in unsorted part will be
 // auto sorted
 
 // complexity
 // time O(n^2), space O(1)
 
-void selection_sort(vector<int> &arr, int n){
+void selection_sort(vector<int> &arr, int n)
+{
 
     // alternate approach (rejected) :
     // too many swap func usage
     // for (int i = 0; i < n-1; i++)
-    // {   
+    // {
     //     for (int j = i +1; j < n; j++)
     //     {
     //         if (arr[j] < arr[i])
     //         {
     //             swap(arr[j],arr[i]);
-    //         }           
+    //         }
     //     }
     // }
 
     // Initial approach (optimal)
-    for (int i = 0; i < n-1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        int min =i;
-        for (int j = i +1; j < n; j++)
+        int min = i;
+        for (int j = i + 1; j < n; j++)
         {
             if (arr[j] < arr[min])
             {
-                min =j;
+                min = j;
             }
-            
         }
-        swap(arr[i],arr[min]);
-        
+        swap(arr[i], arr[min]);
     }
 
     // printing sorted aray
@@ -61,12 +60,10 @@ void selection_sort(vector<int> &arr, int n){
     {
         cout << arr[i] << endl;
     }
-    
-    
 }
 
-
-int main() {
+int main()
+{
     vector<int> arr;
     int n;
     cin >> n;
@@ -76,7 +73,7 @@ int main() {
         cin >> x;
         arr.push_back(x);
     }
-    
+
     selection_sort(arr, n);
     return 0;
 }
