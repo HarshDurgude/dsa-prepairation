@@ -27,6 +27,9 @@ using namespace std;
 // we create temp array in merge to store the merged and at the
 // end of merge we combine that temp to main array
 
+// revision
+// base case forgotten for merge sort
+
 // complexity
 // space =O(n)
 // time = O(N*Log2(N))
