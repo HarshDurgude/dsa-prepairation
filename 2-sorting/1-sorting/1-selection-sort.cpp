@@ -52,7 +52,8 @@ void selection_sort(vector<int> &arr, int n)
                 min = j;
             }
         }
-        swap(arr[i], arr[min]);
+        if (i != min)
+            swap(arr[i], arr[min]);
     }
 
     // printing sorted aray
