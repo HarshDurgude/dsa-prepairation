@@ -16,25 +16,29 @@ using namespace std;
 // iterate to find largest and when finding a even larger
 // num update seclarge to large and large to new number
 // NOTE - if itration not greater than largest then it could be betn
-// large and seclarge, check that too
+// large and seclarge or could be equal to large, check that too
+
+// revision
+// solved correctly but,
+// almost missed the edge case of largest and its right being equal
 
 // initial aproach : optimal, but
 // missed the edge case of second largest being on the right of
-// the largest and laegest and its right being equal
-int secondLargest(vector<int> &arr, int n)
+// the largest and largest and its right being equal
+int secondLargestElement(vector<int> &nums)
 {
-    int largest = INT_MIN, secondLargest = INT_MIN;
-    // INT_MIN used because if largest=arr[0] then inputing empty array will crash
+    int n = nums.size(), largest = INT_MIN, secondLargest = INT_MIN;
+
     for (int i = 0; i < n; i++)
     {
-        if (largest < arr[i])
+        if (nums[i] > largest)
         {
             secondLargest = largest;
-            largest = arr[i];
+            largest = nums[i];
         }
-        else if (arr[i] > secondLargest && arr[i] != largest)
+        else if (nums[i] > secondLargest && nums[i] != largest)
         {
-            secondLargest = arr[i];
+            secondLargest = nums[i];
         }
     }
     return secondLargest == INT_MIN ? -1 : secondLargest;
@@ -42,17 +46,18 @@ int secondLargest(vector<int> &arr, int n)
 
 int main()
 {
-    vector<int> arr;
+    vector<int> nums;
     int n;
     cin >> n;
-    arr.reserve(n);
+    nums.reserve(n);
     for (int i = 0; i < n; i++)
     {
         int x;
         cin >> x;
-        arr.push_back(x);
+        nums.push_back(x);
     }
-    cout << secondLargest(arr, n);
+
+    cout << secondLargestElement(nums);
 
     return 0;
 }

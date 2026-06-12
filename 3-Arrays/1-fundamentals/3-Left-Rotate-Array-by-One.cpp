@@ -24,18 +24,22 @@ using namespace std;
 // get lost so store it in temp at start and restore
 // ist proper position at end
 
+// revision
+// nothing missed
+
 // initial approach but,
 // initially stored last element instead of first
 // and overcomplicated nums[i-1]=nums[i]
-void leftRotateByOne(vector<int> &nums)
+void rotateArrayByOne(vector<int> &nums)
 {
-    int first = nums[0];
-    for (int i = 1; i < nums.size(); i++)
+    int temp = nums[0], n = nums.size();
+
+    for (int i = n - 1; i >= 0; i--)
     {
-        nums[i - 1] = nums[i];
+        swap(temp, nums[i]);
     }
-    nums[nums.size() - 1] = first;
 }
+
 int main()
 {
     vector<int> nums;
@@ -49,7 +53,7 @@ int main()
         nums.push_back(x);
     }
 
-    leftRotateByOne(nums);
+    rotateArrayByOne(nums);
 
     for (int i = 0; i < n; i++)
     {
