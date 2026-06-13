@@ -1,15 +1,15 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-// problem statement : Given two sorted arrays nums1 and nums2, return 
-// an array that contains the union of these two arrays. The elements 
+// problem statement : Given two sorted arrays nums1 and nums2, return
+// an array that contains the union of these two arrays. The elements
 // in the union must be in ascending order.
-// The union of two arrays is an array where all values are distinct and 
+// The union of two arrays is an array where all values are distinct and
 // are present in either the first array, the second array, or both.
 
-// inputs 
-// 3 5 
-// 1 3 5 
+// inputs
+// 3 5
+// 1 3 5
 // 2 3 3 3 4
 
 // output
@@ -23,80 +23,80 @@ using namespace std;
 // think like merge sort but we have to remove duplicates too
 // so we have to check last element of arr before adding new element to it
 
+// revision
+// nailed it
+
 // complexity
 // time = O(m+n)
 // space = O(m+n)
 
 // initial approach but,
-// missed some things like checking last element same or not, 
+// missed some things like checking last element same or not,
 // array size > 0 to check last element
-vector<int> unionArray(vector<int>& nums1, vector<int>& nums2) {
-    int i = 0, j = 0;
+vector<int> unionArray(vector<int> &nums1, vector<int> &nums2)
+{
     vector<int> nums;
-    nums.reserve(nums1.size() + nums2.size());
-    while(i<nums1.size() && j<nums2.size()){
+    int m = nums1.size(), n = nums2.size();
+    int i = 0, j = 0;
+
+    while (i < m && j < n)
+    {
         if (nums1[i] <= nums2[j])
         {
-            if (nums.size() == 0 || nums.back() != nums1[i])
-            { 
+            if (nums.empty() || nums.back() != nums1[i])
                 nums.push_back(nums1[i]);
-            }
             i++;
-            
-
-        }else{
-            if (nums.size() == 0 || nums.back() != nums2[j])
-            { 
+        }
+        else
+        {
+            if (nums.empty() || nums.back() != nums2[j])
                 nums.push_back(nums2[j]);
-            }
             j++;
         }
     }
-    while (i<nums1.size())
+
+    while (i < m)
     {
-        if(nums.back() != nums1[i]){
+        if (nums.back() != nums1[i])
             nums.push_back(nums1[i]);
-        }
         i++;
     }
-    while (j<nums2.size())
+    while (j < n)
     {
-        if(nums.back() != nums2[j]){
+        if (nums.back() != nums2[j])
             nums.push_back(nums2[j]);
-        }
         j++;
     }
+
     return nums;
-                
 }
 
-
-
-int main() {
+int main()
+{
     vector<int> nums1, nums2;
-    int n1,n2;  
+    int n1, n2;
     cin >> n1 >> n2;
     nums1.reserve(n1);
     nums2.reserve(n2);
     for (int i = 0; i < n1; i++)
-    { 
+    {
         int x;
         cin >> x;
         nums1.push_back(x);
     }
     for (int i = 0; i < n2; i++)
-    { 
+    {
         int x;
         cin >> x;
         nums2.push_back(x);
     }
 
-    vector<int> arr = unionArray(nums1,nums2);
+    vector<int> arr = unionArray(nums1, nums2);
 
     for (int i = 0; i < arr.size(); i++)
     {
         cout << arr[i] << endl;
     }
-    
+
     return 0;
 }

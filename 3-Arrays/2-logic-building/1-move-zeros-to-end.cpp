@@ -23,6 +23,11 @@ using namespace std;
 // and all the zeros get in betn of slow and fast so increamenting slow will always automatically
 // point to where next non zero should go
 
+// revision
+// solved correctly but overcomplicated the code, we just need to check
+// for fast pointer if its non-zero or not and then if it is the we check
+// if i and j are equal if they are not then we swap and increament
+
 // complexity
 // time = O(n)
 // space = O(1)
@@ -37,8 +42,8 @@ using namespace std;
 //     }
 // }
 
-// more readable approach
-void moveZerosEnd(vector<int> &nums)
+// more readable and optimal approach
+void moveZeroes(vector<int> &nums)
 {
     // j points to where the next non-zero should be placed
     int j = 0;
@@ -50,10 +55,36 @@ void moveZerosEnd(vector<int> &nums)
         if (nums[i] != 0)
         {
             // Swap it with the element at index j
-            swap(nums[i], nums[j]);
-
+            if (i != j)
+            {
+                swap(nums[i], nums[j]);
+            }
             // Move j to next position
             j++;
+        }
+    }
+}
+
+// revision, more complicaated
+void moveZeroes(vector<int> &nums)
+{
+    int j = 0, n = nums.size();
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] != 0)
+        {
+            if (nums[j] == 0)
+            {
+                swap(nums[j], nums[i]);
+                j++;
+            }
+        }
+        else
+        {
+            if (nums[j] != 0)
+            {
+                j = i;
+            }
         }
     }
 }
@@ -70,7 +101,7 @@ int main()
         cin >> x;
         nums.push_back(x);
     }
-    moveZerosEnd(nums);
+    moveZeroes(nums);
 
     for (int i = 0; i < n; i++)
     {

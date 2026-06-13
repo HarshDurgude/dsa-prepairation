@@ -25,6 +25,9 @@ using namespace std;
 // where non-duplicate element will go, similler to move zeros to end
 // elements to shift to end get stacked up betn slow and fast pointer
 
+// revision
+// nailed it because prev problems and this one are pretty similler
+
 // complexity
 // time = O(n)
 // space = O(1)
@@ -39,6 +42,25 @@ int removeDuplicates(vector<int> &nums)
         {
 
             swap(nums[++j], nums[i]);
+        }
+    }
+    return j + 1;
+}
+
+// more cleaner avoids self swaps
+int removeDuplicates(vector<int> &nums)
+{
+    int j = 0;
+
+    for (int i = 1; i < nums.size(); i++)
+    {
+        if (nums[i] != nums[j])
+        {
+            j++;
+            if (i != j)
+            {
+                swap(nums[i], nums[j]);
+            }
         }
     }
     return j + 1;
