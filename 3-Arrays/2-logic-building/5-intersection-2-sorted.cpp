@@ -26,6 +26,9 @@ using namespace std;
 // not become n till n-1 is added and if n-1 is added then there wont appear
 // any same element again
 
+// revision
+// nailed it
+
 // complexity
 // time = O(m+n)
 // space = O(m+n)
@@ -35,23 +38,28 @@ using namespace std;
 // same elements after that so no need to check like prev prob
 vector<int> intersectionArray(vector<int> &nums1, vector<int> &nums2)
 {
+    int m = nums1.size(), n = nums2.size();
     int i = 0, j = 0;
-    vector<int> nums;
-    nums.reserve(nums1.size() + nums2.size());
-    while (i < nums1.size() && j < nums2.size())
+    vector<int> ans;
+
+    while (i < m && j < n)
     {
-        if (nums1[i] == nums2[j])
+        if (nums1[i] < nums2[j])
         {
-            nums.push_back(nums1[i]);
             i++;
+        }
+        else if (nums1[i] > nums2[j])
+        {
             j++;
         }
         else
         {
-            min(nums1[i], nums2[j]) == nums1[i] ? i++ : j++;
+            ans.push_back(nums1[i]);
+            i++;
+            j++;
         }
     }
-    return nums;
+    return ans;
 }
 
 int main()

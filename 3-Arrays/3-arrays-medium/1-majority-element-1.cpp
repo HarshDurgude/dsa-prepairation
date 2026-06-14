@@ -9,30 +9,37 @@
 // output
 // 1
 
-// approach (Moore’s Voting Algorithm)
+// approach
+// (Moore’s Voting Algorithm)
 // If majority element appears more than n/2 time so if we repeatedly cancle 1 major element
 // with 1 non-major element the majority will still surview
 // Keep a count variable while iterating, Increase count when encountering the same
 // candidate. Decrease count when encountering a different number. If count == 0,
 // change candidate. The final candidate will be the majority element.
 
+// revision
+// messed up the approach logic lil bit
+
 #include <bits/stdc++.h>
 using namespace std;
 
 int majorityElement(vector<int> &nums)
 {
-    int major, count = 0; // try to make initial values 0 or non dependant on array as array could be empty
-    for (int i = 0; i < nums.size(); i++)
+    int n = nums.size(), major, count = 0;
+    for (int i = 0; i < n; i++)
     {
-
         if (count == 0)
         {
             major = nums[i];
             count = 1;
         }
+        else if (nums[i] == major)
+        {
+            count++;
+        }
         else
         {
-            count += nums[i] == major ? 1 : -1;
+            count--;
         }
     }
     return major;
