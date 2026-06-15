@@ -24,74 +24,61 @@
 // vector and if we find a pos then place it art posInd and increament by 2 same for neg
 // and negInd because we know same sine elements will be at alternate
 
+// revision
+// remembered the cleaner approach correctly
+
 #include <bits/stdc++.h>
 using namespace std;
 
 // initial approach worked but,
 // more complex, extra searching, same
 // complexity but extra unit oprations and not cleaner logic
-vector<int> rearrangeArray1(vector<int> &nums)
-{
-    vector<int> li;
-    int i = 0, j = 0;
-    while (i < nums.size() && j < nums.size())
-    {
-        if (nums[i] > 0 && nums[j] < 0)
-        {
-            li.push_back(nums[i++]);
-            li.push_back(nums[j++]);
-        }
-        else
-        {
-            if (nums[i] < 0)
-            {
-                i++;
-            }
-
-            if (nums[j] > 0)
-            {
-                j++;
-            }
-        }
-    }
-    return li;
-}
+// vector<int> rearrangeArray(vector<int> &nums)
+// {
+//     vector<int> li;
+//     int i = 0, j = 0;
+//     while (i < nums.size() && j < nums.size())
+//     {
+//         if (nums[i] > 0 && nums[j] < 0)
+//         {
+//             li.push_back(nums[i++]);
+//             li.push_back(nums[j++]);
+//         }
+//         else
+//         {
+//             if (nums[i] < 0)
+//             {
+//                 i++;
+//             }
+//             if (nums[j] > 0)
+//             {
+//                 j++;
+//             }
+//         }
+//     }
+//     return li;
+// }
 
 // optimal and cleaner
-vector<int> rearrangeArray2(vector<int> &nums)
+vector<int> rearrangeArray(vector<int> &nums)
 {
-    int n = nums.size();
+    int n = nums.size(), pos = 0, neg = 1;
+    vector<int> rearranged(n);
 
-    // Initialize a result vector of size n
-    vector<int> ans(n, 0);
-
-    // Initialize indices for positive and negative elements
-    int posIndex = 0, negIndex = 1;
-
-    // Traverse through each element in nums
     for (int i = 0; i < n; i++)
     {
-        if (nums[i] < 0)
+        if (nums[i] > 0)
         {
-
-            /* If current element is negative, place
-            it at the next odd index in ans*/
-            ans[negIndex] = nums[i];
-
-            // Move to the next odd index
-            negIndex += 2;
+            rearranged[pos] = nums[i];
+            pos += 2;
         }
         else
         {
-            ans[posIndex] = nums[i];
-
-            // Move to the next even index
-            posIndex += 2;
+            rearranged[neg] = nums[i];
+            neg += 2;
         }
     }
-
-    // Return the rearranged array
-    return ans;
+    return rearranged;
 }
 
 int main()
@@ -106,7 +93,7 @@ int main()
         cin >> x;
         nums.push_back(x);
     }
-    vector<int> output = rearrangeArray2(nums);
+    vector<int> output = rearrangeArray(nums);
 
     for (int out : output)
     {
