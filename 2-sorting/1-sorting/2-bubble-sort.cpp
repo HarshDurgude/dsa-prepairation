@@ -70,5 +70,6 @@ int main()
     }
 
     bubble_sort(nums, n);
+
     return 0;
 }

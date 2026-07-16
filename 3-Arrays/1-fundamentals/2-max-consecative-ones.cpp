@@ -40,6 +40,25 @@ int findMaxConsecutiveOnes(vector<int> &nums)
     return globalMaxOnes;
 }
 
+int findMaxConsecutiveOnes_(vector<int> &nums)
+{
+    int n = nums.size(), maxOnes = 0, ones = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == 1)
+        {
+            ones += 1;
+            maxOnes = max(maxOnes, ones);
+        }
+        else if (nums[i] == 0)
+        {
+            ones = 0;
+        }
+    }
+
+    return maxOnes;
+}
+
 int main()
 {
     vector<int> nums;
@@ -52,7 +71,7 @@ int main()
         cin >> x;
         nums.push_back(x);
     }
-    cout << findMaxConsecutiveOnes(nums);
+    cout << findMaxConsecutiveOnes_(nums);
 
     return 0;
 }

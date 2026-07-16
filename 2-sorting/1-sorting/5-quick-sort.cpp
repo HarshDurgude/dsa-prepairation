@@ -32,7 +32,7 @@ using namespace std;
 // * if (low >= high), at first did if (low == high)
 // * && i <= high - 1, && j >= low + 1, missed the 2nd conditions for
 // while loops
-// * only one condition from i or j will have equal condition(not both
+// *** only one condition from i or j will have equal condition(not both
 // <=, >= ❌ ) because we have to move duplicate elements to one side
 // * i = low, initially did i = low+1 but when low and high have one
 // number diff. then low + 1 becomes high so intially condition(i<j)

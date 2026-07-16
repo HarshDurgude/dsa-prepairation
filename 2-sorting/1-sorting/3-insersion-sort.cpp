@@ -80,6 +80,6 @@ int main()
         arr.push_back(x);
     }
 
-    insersion_sort_2(arr, n);
+    insersion_sort_1(arr, n);
     return 0;
 }
