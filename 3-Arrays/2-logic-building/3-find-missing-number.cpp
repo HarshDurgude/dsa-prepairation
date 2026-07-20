@@ -63,10 +63,5 @@ int main()
     }
     cout << findMissing(nums);
 
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cout << nums[i] << endl;
-    // }
-
     return 0;
 }

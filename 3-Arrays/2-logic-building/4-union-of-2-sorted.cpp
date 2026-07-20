@@ -24,7 +24,7 @@ using namespace std;
 // so we have to check last element of arr before adding new element to it
 
 // revision
-// nailed it
+// missed the temp.empty()
 
 // complexity
 // time = O(m+n)

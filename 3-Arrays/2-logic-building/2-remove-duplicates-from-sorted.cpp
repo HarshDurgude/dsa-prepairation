@@ -20,9 +20,11 @@ using namespace std;
 // 5
 
 // approach
+// using for loop simplicity
 // very intuative when u do the move-zeros-to-end
-// using 2 pointer aproach, one to traverse and one to tarck position of
-// where non-duplicate element will go, similler to move zeros to end
+// using 2 pointer aproach, one to find the next non-duplicate
+// element and one to tarck position of where non-duplicate
+// element will go, similler to move zeros to end
 // elements to shift to end get stacked up betn slow and fast pointer
 
 // revision
@@ -32,20 +34,19 @@ using namespace std;
 // time = O(n)
 // space = O(1)
 
-// initial approach (Worked)
-int removeDuplicates(vector<int> &nums)
-{
-    int j = 0;
-    for (int i = 1; i < nums.size(); i++)
-    {
-        if (nums[j] != nums[i])
-        {
-
-            swap(nums[++j], nums[i]);
-        }
-    }
-    return j + 1;
-}
+// initial approach (Worked), but self swaps
+// int removeDuplicates1(vector<int> &nums)
+// {
+//     int j = 0;
+//     for (int i = 1; i < nums.size(); i++)
+//     {
+//         if (nums[j] != nums[i])
+//         {
+//             swap(nums[++j], nums[i]);
+//         }
+//     }
+//     return j + 1;
+// }
 
 // more cleaner avoids self swaps
 int removeDuplicates(vector<int> &nums)

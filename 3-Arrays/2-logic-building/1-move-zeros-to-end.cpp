@@ -17,74 +17,35 @@ using namespace std;
 // 0
 
 // approach
+// using for loop simplicity
 // moving all the zeros to the end by one by one swapping
 // zeros with its next non zero elements, one counter for where the next non
-// zero elemnet will go and one for current element, it becomes a fast-slow 2 pointer approach
-// and all the zeros get in betn of slow and fast so increamenting slow will always automatically
+// zero elemnet will go and one for next non-zero elemnet, it
+// becomes a fast-slow 2 pointer approach and all the zeros get in betn
+// of slow and fast so increamenting slow will always automatically
 // point to where next non zero should go
 
 // revision
-// solved correctly but overcomplicated the code, we just need to check
-// for fast pointer if its non-zero or not and then if it is the we check
-// if i and j are equal if they are not then we swap and increament
+// selected the more intuative aproach
+// while or for doest matter
 
 // complexity
 // time = O(n)
 // space = O(1)
 
-// initial approach very overcomplicated
-// void moveZerosEnd(vector<int> &nums){
-//     int n = 0;
-//     for (int i = 0; i < nums.size(); i++)
-//     {
-//         if (nums[i] == 0) n++;
-//         else if(n != 0) {nums[i-n] = nums[i]; nums[i] = 0;}
-//     }
-// }
-
-// more readable and optimal approach
 void moveZeroes(vector<int> &nums)
 {
-    // j points to where the next non-zero should be placed
     int j = 0;
 
-    // Traverse all elements
     for (int i = 0; i < nums.size(); i++)
     {
-        // If current element is non-zero
         if (nums[i] != 0)
         {
-            // Swap it with the element at index j
             if (i != j)
             {
                 swap(nums[i], nums[j]);
             }
-            // Move j to next position
             j++;
-        }
-    }
-}
-
-// revision, more complicaated
-void moveZeroes(vector<int> &nums)
-{
-    int j = 0, n = nums.size();
-    for (int i = 0; i < nums.size(); i++)
-    {
-        if (nums[i] != 0)
-        {
-            if (nums[j] == 0)
-            {
-                swap(nums[j], nums[i]);
-                j++;
-            }
-        }
-        else
-        {
-            if (nums[j] != 0)
-            {
-                j = i;
-            }
         }
     }
 }
