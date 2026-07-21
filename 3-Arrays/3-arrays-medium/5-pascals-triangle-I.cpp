@@ -44,6 +44,7 @@ int pascalTriangleI(int r, int c)
     }
     return result;
 }
+
 int main()
 {
 

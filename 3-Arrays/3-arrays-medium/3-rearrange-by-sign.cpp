@@ -30,35 +30,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// initial approach worked but,
-// more complex, extra searching, same
-// complexity but extra unit oprations and not cleaner logic
-// vector<int> rearrangeArray(vector<int> &nums)
-// {
-//     vector<int> li;
-//     int i = 0, j = 0;
-//     while (i < nums.size() && j < nums.size())
-//     {
-//         if (nums[i] > 0 && nums[j] < 0)
-//         {
-//             li.push_back(nums[i++]);
-//             li.push_back(nums[j++]);
-//         }
-//         else
-//         {
-//             if (nums[i] < 0)
-//             {
-//                 i++;
-//             }
-//             if (nums[j] > 0)
-//             {
-//                 j++;
-//             }
-//         }
-//     }
-//     return li;
-// }
-
 // optimal and cleaner
 vector<int> rearrangeArray(vector<int> &nums)
 {

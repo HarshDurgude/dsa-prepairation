@@ -45,6 +45,28 @@ int majorityElement(vector<int> &nums)
     return major;
 }
 
+// revision code - same idea but slightly messy code
+// int majorityElement(vector<int> &nums)
+// {
+//     int n = nums.size(),major=nums[0],count=0;
+//     for (int i = 0; i < n; i++)
+//     {
+//         if (nums[i]==major)
+//         {
+//             count++;
+//         }else
+//         {
+//             count--;
+//             if (count==0)
+//             {
+//                 major=nums[i];
+//                 count=1;
+//             }
+//         }
+//     }
+//     return major;
+// }
+
 int main()
 {
     vector<int> nums;

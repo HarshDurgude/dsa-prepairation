@@ -21,6 +21,7 @@
 // so we observe the pattern that the spiral will be repeatation of smaller and smaller
 // squares so we can use 4 for loops for each side of smaller squares to get each element
 // but then the last square will sometimes have 1/2/3/4 sides so we add conditions to check that
+// the conditions also check for edge cases like vertical(m,1) and horizontal(1,n) matrix
 
 // revision
 // missed the edge cases for vertical(m,1) and horizontal(1,n) matrix
@@ -30,28 +31,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// initial aproach, worked but,
-// missed edge cases of the lower 2 for loops
-vector<int> spiralMatrix(vector<vector<int>> &matrix)
+vector<int> spiralOrder(vector<vector<int>> &matrix)
 {
-    int n = matrix.size();
-    int m = matrix[0].size();
-
-    vector<int> ans;
     int top = 0, left = 0;
-    int bottom = n - 1, right = m - 1;
+    int bottom = matrix.size() - 1, right = matrix[0].size() - 1;
+
+    vector<int> spiral;
 
     while (top <= bottom && left <= right)
     {
         for (int i = left; i <= right; i++)
         {
-            ans.push_back(matrix[top][i]);
+            spiral.push_back(matrix[top][i]);
         }
         top++;
 
         for (int i = top; i <= bottom; i++)
         {
-            ans.push_back(matrix[i][right]);
+            spiral.push_back(matrix[i][right]);
         }
         right--;
 
@@ -59,54 +56,22 @@ vector<int> spiralMatrix(vector<vector<int>> &matrix)
         {
             for (int i = right; i >= left; i--)
             {
-                ans.push_back(matrix[bottom][i]);
+                spiral.push_back(matrix[bottom][i]);
             }
-            bottom--;
-        }
-        if (left <= right)
-        {
-            for (int i = bottom; i >= top; i--)
-            {
-                ans.push_back(matrix[i][left]);
-            }
-            left++;
-        }
-    }
-
-    return ans;
-}
-
-vector<int> spiralOrder(vector<vector<int>> &matrix)
-{
-
-    vector<int> ans;
-    int m = matrix.size(), n = matrix[0].size();
-    int top = 0, bottom = m - 1, left = 0, right = n - 1;
-
-    while (top <= bottom && left <= right)
-    {
-        for (int i = left; i <= right; i++)
-        {
-            ans.push_back(matrix[top][i]);
-        }
-        top++;
-        for (int i = top; i <= bottom; i++)
-        {
-            ans.push_back(matrix[i][right]);
-        }
-        right--;
-        for (int i = right; i >= left && top <= bottom; i--)
-        {
-            ans.push_back(matrix[bottom][i]);
         }
         bottom--;
-        for (int i = bottom; i >= top && left <= right; i--)
+
+        if (left <= right)
         {
-            ans.push_back(matrix[i][left]);
+
+            for (int i = bottom; i >= top; i--)
+            {
+                spiral.push_back(matrix[i][left]);
+            }
         }
         left++;
     }
-    return ans;
+    return spiral;
 }
 
 int main()
