@@ -16,33 +16,30 @@
 // 3
 
 // approach
-// logic is very straight forword onec u know the hidden relation betn
-// nCr and pascals triangle, in pascals triangle for rth row and cth column
+// logic is very straight forword once u know the hidden relation betn
+// nCr and pascals triangle, in pascals triangle for rth
+// row and cth column(0-indexed) (row)C(col) is the formula
 // and while calculating nCr = n! / (r! * (n-r)!) we can just do
-// = [(n)*(n-1)*(n-2)...(n-r+1)] / [1*2*3...r]
+// = [(n)*(n-1)*(n-2)...(n-(r-1))] / [1*2*3...r]
 
 #include <bits/stdc++.h>
 using namespace std;
 
 // intial approach, worked but
 // was lil bit complex so simplified using 1 for loop
-int pascalTriangleI(int r, int c)
+
+int pascalTriangleI(int row, int col)
 {
 
-    r = r - 1;
-    c = c - 1;
+    int n = row - 1, r = col - 1, ncr = 1;
 
-    if (c > r - c) // lowering iterations cause nCr and (n)C(n-r) are same
-        c = r - c;
+    r = min(r, n - r);
 
-    int result = 1;
-
-    for (int i = 1; i <= c; i++)
+    for (int i = 0; i < r; i++)
     {
-        result *= (r - c + i);
-        result /= i;
+        ncr = ((ncr * (n - i)) / (i + 1));
     }
-    return result;
+    return ncr;
 }
 
 int main()

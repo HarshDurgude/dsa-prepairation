@@ -51,14 +51,15 @@ using namespace std;
 // optimal approach
 vector<int> pascalTriangleII(int r)
 {
-    vector<int> result(r);
-
-    result[0] = 1;
+    vector<int> row;
+    int element = 1;
+    row.push_back(element);
     for (int i = 1; i < r; i++)
     {
-        result[i] = (result[i - 1] * (r - i)) / i;
+        element = (element * (r - i)) / (i);
+        row.push_back(element);
     }
-    return result;
+    return row;
 }
 
 int main()
