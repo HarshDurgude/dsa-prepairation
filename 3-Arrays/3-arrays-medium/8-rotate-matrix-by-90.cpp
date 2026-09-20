@@ -23,6 +23,7 @@
 // swap elements so we reverse each rows first then swapping matrix[i][j] with
 // matrix[N - 1 - j][N - 1 - i] or we can also simplify it by swapping first matrix[i][j]
 // with matrix[j][i] and then reversing each row
+
 #include <bits/stdc++.h>
 using namespace std;
 

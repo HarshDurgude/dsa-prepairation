@@ -15,9 +15,14 @@
 // 1 3 3 1
 // 1 4 6 4 1
 
-// approach
+// approach 1
 // this approach basically goes with the defination of the pascals triangle
 // an element(triangle[r][c]) is the sum of triangle[r-1][c] + triangle[r-1][c-1]
+
+// approach 2
+// we can also solve this by genrating rows like we did in pascals triangle 2
+// but that approach is best fitted for genrating only a row, here we already
+// know the prev rows so adding of two elements from prev row is more simpler
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -25,19 +30,25 @@ using namespace std;
 // initial approach, also optimal
 vector<vector<int>> pascalTriangleIII(int n)
 {
-    vector<vector<int>> triangle(n);
-    triangle[0] = {1};
+    vector<vector<int>> rows;
 
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        triangle[i].resize(i + 1);
-        triangle[i][0] = triangle[i][i] = 1;
-        for (int j = 1; j < i; j++)
+        vector<int> row;
+        for (int j = 0; j <= i; j++)
         {
-            triangle[i][j] = triangle[i - 1][j] + triangle[i - 1][j - 1];
+            if (j == 0 || j == i)
+            {
+                row.push_back(1);
+            }
+            else
+            {
+                row.push_back(rows[i - 1][j - 1] + rows[i - 1][j]);
+            }
         }
+        rows.push_back(row);
     }
-    return triangle;
+    return rows;
 }
 
 int main()

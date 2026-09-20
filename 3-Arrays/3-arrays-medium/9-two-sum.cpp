@@ -12,6 +12,9 @@
 // 0
 // 1
 
+// hint
+// using unordered map
+
 // approach 1
 // we traverse throgh the vector but also create a hashap parallelly which stores the
 // target - current wih current's index, so if we find a current in furthur traversal
@@ -47,9 +50,11 @@ vector<int> twoSum1(vector<int> &nums, int target)
     return {};
 }
 
+// IMP - alternate  (view after optimal)
 // alternate solution, when we are not allowed to use map
 vector<int> twoSum2(vector<int> &nums, int target)
 {
+
     // Size of the nums vector
     int n = nums.size();
 
@@ -125,3 +130,6 @@ int main()
 
     return 0;
 }
+
+// 1 2 3 6 10
+//
