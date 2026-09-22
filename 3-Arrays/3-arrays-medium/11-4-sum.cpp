@@ -13,6 +13,9 @@
 // output
 // -2 1 3 5
 
+// hint
+// derived from the approach 2 of the prev problem
+
 // approach 1
 // derived from the approach 2 of the prev problem, we didnt use approach 1 because
 // when we dont need indexes it doesnt make sense to use it, because it increases complexity,

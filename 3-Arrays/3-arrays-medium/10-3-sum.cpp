@@ -1,7 +1,9 @@
-// Problem Statement : Given an array of integers nums and an integer target. Return the
-// indices(0 - indexed) of two elements in nums such that they add up to target.
-// Each input will have exactly one solution, and the same element cannot be used twice.
-// Return the answer in any order.
+// Problem Statement
+// Given an integer array nums. Return all triplets such that:
+// i != j, i != k, and j != k
+// nums[i] + nums[j] + nums[k] == 0.
+// Notice that the solution set must not contain duplicate triplets. One element can
+// be a part of multiple triplets. The output and the triplets can be returned in any order.
 
 // input
 // 6

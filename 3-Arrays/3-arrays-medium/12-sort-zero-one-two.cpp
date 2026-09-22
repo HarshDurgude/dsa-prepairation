@@ -23,47 +23,14 @@
 // increament and decreament carefully, cause we dont know what will we get after
 // swaping with high(non traversed area), but swaping with low will def give 1
 
+// hint 1
+// similler to move zeros to end and use low, mid, high
+
 #include <bits/stdc++.h>
 using namespace std;
 
-// self derived approach, but doesnt work
-// fails for many edge cases, i can still make it work but
-// it will still be more iterations than the optimal solution
-void sortZeroOneTwo1(vector<int> &nums)
-{
-    int zero, one;
-    zero = one = 0;
-
-    for (int i = 0; i < nums.size() && one < nums.size() && zero < nums.size(); i++)
-    {
-
-        if (nums[i] == 0)
-        {
-            swap(nums[i], nums[one]);
-            swap(nums[one], nums[zero]);
-            zero++;
-            one++;
-        }
-        else if (nums[i] == 1)
-        {
-            swap(nums[i], nums[one]);
-            one++;
-        }
-
-        if (one <= zero)
-        {
-            if (nums[zero] == 1)
-                one = zero + 1;
-            else
-            {
-                one = zero;
-            }
-        }
-    }
-}
-
 // optimal approach, also called dutch national flag algorithm
-void sortZeroOneTwo2(vector<int> &nums)
+void sortZeroOneTwo(vector<int> &nums)
 {
     int low, mid, high;
     low = mid = 0;
@@ -102,7 +69,7 @@ int main()
         nums.push_back(x);
     }
 
-    sortZeroOneTwo2(nums);
+    sortZeroOneTwo(nums);
 
     for (int i = 0; i < n; i++)
     {

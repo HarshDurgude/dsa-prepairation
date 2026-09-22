@@ -50,7 +50,7 @@ vector<int> twoSum1(vector<int> &nums, int target)
     return {};
 }
 
-// IMP - alternate  (view after optimal)
+// IMP FOR NEXT PROB - alternate  (view after optimal)
 // alternate solution, when we are not allowed to use map
 vector<int> twoSum2(vector<int> &nums, int target)
 {
@@ -125,8 +125,13 @@ int main()
     cin >> target;
 
     vector<int> out = twoSum1(nums, target);
-    cout << out[0] << endl;
-    cout << out[1];
+    // cout << out[0] << endl;
+    // cout << out[1];
+
+    for (int i = 0; i < out.size(); i++)
+    {
+        cout << out[i] << endl;
+    }
 
     return 0;
 }
