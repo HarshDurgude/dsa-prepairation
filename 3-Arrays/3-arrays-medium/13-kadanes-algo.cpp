@@ -19,6 +19,11 @@
 // start fresh with a new subarray, starting from next element,
 // so currentMax resets to 0
 
+// approach follow up
+// use pointers to keep track of where the max subarray start and ends
+// and when we detect a max subarray then we can print that using those
+// high and low pointers
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -86,6 +91,7 @@ int main()
         nums.push_back(x);
     }
 
+    // cout << maxSubArray(nums);
     printMaxSubArray(nums);
 
     return 0;
