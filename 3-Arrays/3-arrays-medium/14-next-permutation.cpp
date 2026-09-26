@@ -26,6 +26,15 @@
 // element just bigger than that then we swap them and reverse the assending to make it
 // dessending to get just bigger number than that
 
+// hint 1
+// we check the elements from right to left for assending order
+// and where it breaks the order thats where we find the pivot
+
+// hint 2
+// then find the
+// element just bigger than that then we swap them and reverse the assending to make it
+// dessending to get just bigger number than that
+
 #include <bits/stdc++.h>
 using namespace std;
 
