@@ -36,34 +36,33 @@ using namespace std;
 // initial approach, optimal but
 // looked at solution then discovered,
 // time = O(N2), space = O(N) + O(no. of triplets)
-vector<vector<int>> threeSum1(vector<int> &nums)
-{
-    set<vector<int>> result;
-    int n = nums.size();
-    for (int i = 0; i < n; i++)
-    {
-        unordered_set<int> visited;
-        for (int j = i + 1; j < n; j++)
-        {
-            auto it = visited.find(-nums[i] - nums[j]);
-            if (it != visited.end())
-            {
-                vector<int> add = {nums[i], nums[j], -nums[i] - nums[j]};
-                sort(add.begin(), add.end());
-                result.insert(add);
-            }
-
-            visited.insert(nums[j]);
-        }
-    }
-    vector<vector<int>> ans(result.begin(), result.end());
-    return ans;
-}
+// vector<vector<int>> threeSum1(vector<int> &nums)
+// {
+//     set<vector<int>> result;
+//     int n = nums.size();
+//     for (int i = 0; i < n; i++)
+//     {
+//         unordered_set<int> visited;
+//         for (int j = i + 1; j < n; j++)
+//         {
+//             auto it = visited.find(-nums[i] - nums[j]);
+//             if (it != visited.end())
+//             {
+//                 vector<int> add = {nums[i], nums[j], -nums[i] - nums[j]};
+//                 sort(add.begin(), add.end());
+//                 result.insert(add);
+//             }
+//             visited.insert(nums[j]);
+//         }
+//     }
+//     vector<vector<int>> ans(result.begin(), result.end());
+//     return ans;
+// }
 
 // alternate more optimal solution
 // derived from the sorting solution from 2 sum
 // time = O(N2), space = O(no. of triplets)
-vector<vector<int>> threeSum2(vector<int> &nums)
+vector<vector<int>> threeSum(vector<int> &nums)
 {
     vector<vector<int>> result;
     sort(nums.begin(), nums.end());
@@ -113,7 +112,7 @@ int main()
         nums.push_back(x);
     }
 
-    vector<vector<int>> out = threeSum2(nums);
+    vector<vector<int>> out = threeSum(nums);
 
     for (int i = 0; i < out.size(); i++)
     {

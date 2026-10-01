@@ -23,6 +23,7 @@
 // we can also solve this by genrating rows like we did in pascals triangle 2
 // but that approach is best fitted for genrating only a row, here we already
 // know the prev rows so adding of two elements from prev row is more simpler
+// and addition is less heavy than multiplication
 
 #include <bits/stdc++.h>
 using namespace std;

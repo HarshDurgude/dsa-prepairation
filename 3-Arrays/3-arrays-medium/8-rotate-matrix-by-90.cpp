@@ -30,19 +30,19 @@ using namespace std;
 // intial approach, derived aproach with a hint
 void rotateMatrix(vector<vector<int>> &nums)
 {
-    int N = nums.size();
 
-    for (int i = 0; i < N; i++)
+    int n = nums.size();
+    for (int i = 0; i < n - 1; i++)
     {
-        reverse(nums[i].begin(), nums[i].end());
+        for (int j = i + 1; j < n; j++)
+        {
+            swap(nums[i][j], nums[j][i]);
+        }
     }
 
-    for (int i = 0; i < N - 1; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < N - i - 1; j++)
-        {
-            swap(nums[i][j], nums[N - 1 - j][N - 1 - i]);
-        }
+        reverse(nums[i].begin(), nums[i].end());
     }
 }
 

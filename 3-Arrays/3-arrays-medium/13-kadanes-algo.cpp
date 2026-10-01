@@ -51,9 +51,11 @@ int maxSubArray(vector<int> &nums)
 // follow up Que : Can you print the subarray that has the max sum ?
 void printMaxSubArray(vector<int> &nums)
 {
-    int currentMax, globalMax, low = 0, high = 0, start = 0;
+    int currentMax, globalMax;
     currentMax = 0;
     globalMax = INT_MIN;
+
+    int low = 0, high = 0, tempLow = 0;
 
     for (int i = 0; i < nums.size(); i++)
     {
@@ -63,18 +65,19 @@ void printMaxSubArray(vector<int> &nums)
         {
             globalMax = currentMax;
             high = i;
-            low = start;
+            low = tempLow;
         }
 
         if (currentMax < 0)
         {
             currentMax = 0;
-            start = i + 1;
+            tempLow = i + 1;
         }
     }
+
     for (int i = low; i <= high; i++)
     {
-        cout << nums[i] << " ";
+        cout << nums[i] << endl;
     }
 }
 
