@@ -9,9 +9,14 @@
 // 2
 
 // approach
-// so in the map instead of storing the index we store the count of how many times the
-// same (prefix_sum - k) appears while traversing, and we just increase it by one every time
-// we find it and add it to counter
+// understand prev problem properly before coming to this one
+// so in the problem instead of storing the index we store the count of how many times the
+// same (prefix_sum - k) appears while traversing, because when (prefix_sum - k) appears
+// before the current element it means we have an subarray whose sum is k (subarray from
+// where (prefix_sum - k) is found till the current element), in this found subarray we could have
+// multiple subarrays whose sum is k, we get the count of all those subarrays from the value stored
+// in map[prefix_sum - k] so we add map[prefix_sum - k] into count and also do map[prefix_sum]++
+// so correct count of (prefix_sum - k) is maintained for furthur oprations
 
 #include <bits/stdc++.h>
 using namespace std;

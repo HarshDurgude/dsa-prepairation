@@ -1,41 +1,42 @@
-// Problem Statement : You are given an integer array arr of size n which contains
-// both positive and negative integers. Your task is to find the length of the
-// longest contiguous subarray with sum equal to 0.
-// Return the length of such a subarray. If no such subarray exists, return 0.
+// Problem Statement : Given an array of integers nums and an integer k,
+// return the total number of subarrays whose XOR equals to k.
 
 // input
-// 6
-// 1 0 -4 3 1 0
+// 5
+// 5 6 7 8 9
 
 // output
-// 5
+// 2
 
 // approach
-// its same as last problem we just find if current sum is found somewhere in the map
+// just like last approach instead of increamenting prefix_sum we increament
+// prefix_xor and check if prefix_xor ^ k exists in the map and if it does
+// then we increament the count and we also do map[prefix_xor]++ in the end
+// for maintaining correct count for furthur oprations
 
 #include <bits/stdc++.h>
 using namespace std;
 // optimal solution for pos + neg
-int subarraySum(vector<int> &nums, int k)
+int subarraysWithXorK(vector<int> &nums, int k)
 {
 
     int n = nums.size();
     unordered_map<int, int> mp;
     int count = 0;
-    int prefix_sum = 0;
+    int prefix_xor = 0;
     mp[0] = 1; // for handling case where subarray is starting from 0
 
     for (int i = 0; i < n; i++)
     {
-        prefix_sum += nums[i];
+        prefix_xor ^= nums[i];
 
-        auto it = mp.find(prefix_sum - k);
+        auto it = mp.find(prefix_xor ^ k);
         if (it != mp.end())
         {
             count += it->second;
         }
 
-        mp[prefix_sum]++;
+        mp[prefix_xor]++;
     }
 
     return count;
@@ -55,7 +56,7 @@ int main()
         nums.push_back(x);
     }
 
-    cout << subarraySum(nums, 2);
+    cout << subarraysWithXorK(nums, 5);
 
     return 0;
 }
