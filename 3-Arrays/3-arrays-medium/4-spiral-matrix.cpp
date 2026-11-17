@@ -78,7 +78,7 @@ int main()
 {
     int n, m;
     cin >> n >> m;
-    // n -> vertical, m -> horizontal
+    // n -> vertical, m -> orizontal
     vector<vector<int>> nums(n, vector<int>(m));
     for (int i = 0; i < n; i++)
     {

@@ -42,17 +42,18 @@ using namespace std;
 void nextPermutation(vector<int> &nums)
 {
     int n = nums.size();
-    int pivot = -1, ind = n;
-    for (int i = n - 2; i >= 0; i--)
+    int rev = 0;
+
+    for (int i = n - 2; i >= 0; i++)
     {
         if (nums[i] < nums[i + 1])
         {
-            pivot = i;
-            for (int j = n - 1; j > i; j--)
+            for (int j = n - 1; j > i; j++)
             {
-                if (nums[pivot] < nums[j])
+                if (nums[j] > nums[i])
                 {
-                    ind = j;
+                    swap(nums[i], nums[j]);
+                    rev = i + 1;
                     break;
                 }
             }
@@ -60,15 +61,7 @@ void nextPermutation(vector<int> &nums)
         }
     }
 
-    if (pivot >= 0)
-    {
-        swap(nums[pivot], nums[ind]);
-        reverse(nums.begin() + pivot + 1, nums.end());
-    }
-    else
-    {
-        reverse(nums.begin(), nums.end());
-    }
+    reverse(nums.begin() + rev, nums.end());
 }
 
 int main()

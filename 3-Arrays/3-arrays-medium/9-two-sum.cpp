@@ -54,59 +54,36 @@ vector<int> twoSum1(vector<int> &nums, int target)
 // alternate solution, when we are not allowed to use map
 vector<int> twoSum2(vector<int> &nums, int target)
 {
-
-    // Size of the nums vector
     int n = nums.size();
+    vector<vector<int>> converted;
 
-    // Vector to store indices of two numbers
-    vector<int> ans;
-
-    vector<vector<int>> eleIndex;
-    for (int i = 0; i < nums.size(); i++)
+    for (int i = 0; i < n; i++)
     {
-        eleIndex.push_back({nums[i], i});
+        converted.push_back({nums[i], i});
     }
 
-    // Sort by first element in ascending order
-    sort(eleIndex.begin(), eleIndex.end(), [](const vector<int> &a, const vector<int> &b)
-         { return a[0] < b[0]; }); // this is like the callback functon
+    sort(converted.begin(), converted.end(), [](vector<int> &a, vector<int> &b)
+         { return a[0] < b[0]; });
 
-    /* Two pointers: one starting
-    from left and one from right*/
-    int left = 0, right = n - 1;
+    int low = 0, high = n - 1;
 
-    while (left < right)
+    while (low <= high)
     {
-        /* Calculate sum of elements
-        at left and right pointers*/
-        int sum = eleIndex[left][0] + eleIndex[right][0];
-
-        if (sum == target)
+        int sum = converted[low][0] + converted[high][0];
+        if (sum > target)
         {
-
-            /* If sum equals target,
-            store indices and return*/
-            ans.push_back(eleIndex[left][1]);
-            ans.push_back(eleIndex[right][1]);
-            return ans;
+            high--;
         }
         else if (sum < target)
         {
-
-            /* If sum is less than target,
-            move left pointer to the right*/
-            left++;
+            low++;
         }
         else
         {
-
-            /* If sum is greater than target,
-            move right pointer to the left*/
-            right--;
+            return {converted[low][1], converted[high][1]};
         }
     }
 
-    // If no such pair found, return {-1, -1}
     return {-1, -1};
 }
 
@@ -124,7 +101,7 @@ int main()
     }
     cin >> target;
 
-    vector<int> out = twoSum1(nums, target);
+    vector<int> out = twoSum2(nums, target);
     // cout << out[0] << endl;
     // cout << out[1];
 
